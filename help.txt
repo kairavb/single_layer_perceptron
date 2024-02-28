@@ -1,0 +1,58 @@
+# neuron is like a variable that holds a number between 0 and 1
+
+# the above number is called activation number of neuron
+
+# weights are like wiring in brain, they can be negative or positive numbers
+
+# bias is a number given to each output neuron
+
+# sum is adding (activation*weight) of each neuron
+
+# if sum > bias then neuron fires 1 //else// sum < bias then neuron dose not fires 0
+
+# EXAMPLE:-
+
+[p, q, r] * [a, x]
+            [b, y]  == [out1, out2]
+            [c, z]
+
+(1x3) * (3x2) == (1x2)
+
+# GENERAL FORM:-
+
+pqr input neurons,
+abc weights from pqr to out1,
+xyz weights from pqr to out2
+
+(1xn) * (nxk) == (1xk)
+
+where n is number of input neuron, k is number of output neuron
+total weights is (input neuron * output neuron)
+
+# Gather data --> Train data --> Test data --> Save Model
+
+# %OBSERVATION%
+I have noticed that RGB pictures yield better results then BW pictures for training neural network
+
+# learning is finding right weights and biases
+
+# FORMULA
+sigmoid function compress values to between 0 and 1
+sigmoid func --> y = 1/(1+e**-x) , where e = 2.718
+[A] is input matrix
+[B] is weights matrix
+[C] is bias of each output neuron
+activation of output neuron --> Sigmoid_Func([A].[B] + [C])
+
+sigmoid  | [p, q, r] * [a, x]                    |
+func     |             [b, y]  + [Bias1, Bias2]  |   ==  [activation1, activation2]
+         |             [c, z]                    |
+
+after sigmoid function we can multiply with 100 and get percentage value of how sure
+neural network is to fire the neuron, given that activation of input neuron was also
+between 0 and 1
+
+# ReLU instead of Sigmoid for faster NN
+(Rectified Linear Unit)
+ReLU returns 0 for x = 0 or x < 0 and returns x for x > 0
+Formula --> max(0, x)
