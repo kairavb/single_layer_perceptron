@@ -1,6 +1,12 @@
 # single_layer_perceptron
 it is a single layer small neural network without any external ai library's
 
+## see through mode
+it has a see through mode, which is nothing but basically transforms trained weights into a color/bw image by matrix conversions
+so it is visually apealing and you can actually see inside the neural network
+example image, (trained on a similar image)
+![sample image](s.webp)
+
 ## help notes
 - neuron is like a variable that holds a number between 0 and 1
 - the above number is called activation number of neuron
