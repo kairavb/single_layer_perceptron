@@ -1,63 +1,55 @@
-# single_layer_perceptron
-it is a single layer small neural network without any external ai library's
+---
+title: Single Layer Perceptron
+emoji: 🧠
+colorFrom: blue
+colorTo: purple
+sdk: gradio
+sdk_version: 4.44.0
+app_file: app.py
+pinned: false
+license: mit
+---
 
-## see through mode
-it has a see through mode, which is nothing but basically transforms trained weights into a color/bw image by matrix conversions
-so it is visually apealing and you can actually see inside the neural network
-example image, (trained on a similar image)
+# Single Layer Perceptron
+
+A single-layer neural network built without external ML libraries — only NumPy and OpenCV.
+
+Use the Gradio app to capture webcam images for 4 classes, train the perceptron, classify live frames, and visualize learned weights.
+
+## See-through mode
+
+Trained weights are converted into color or black-and-white images so you can visually inspect what the network learned.
+
 ![sample image](s.webp)
 
-## help notes
-- neuron is like a variable that holds a number between 0 and 1
-- the above number is called activation number of neuron
-- weights are like wiring in brain, they can be negative or positive numbers
-- bias is a number given to each output neuron
-- sum is adding (activation*weight) of each neuron
-- if sum > bias then neuron fires 1 //else// sum < bias then neuron dose not fires 0
+## Windows version
 
-## EXAMPLE:-
+For local use on Windows with keyboard controls, run `main_windows.py`:
 
-[p, q, r] * [a, x]
-            [b, y]  == [out1, out2]
-            [c, z]
+| Key | Action |
+|-----|--------|
+| `q` | Gather training images (a/s/d/f for classes 0–3) |
+| `z` | Train |
+| `m` | Test / classify |
+| `p` | Export weights |
+| `esc` | Exit |
 
-(1x3) * (3x2) == (1x2)
+Requires the `keyboard` package and a local webcam.
 
-## GENERAL FORM:-
+## Help notes
 
-pqr input neurons,
-abc weights from pqr to out1,
-xyz weights from pqr to out2
+- A neuron holds a number between 0 and 1 (its activation).
+- Weights connect input neurons to output neurons; they can be positive or negative.
+- Bias is a threshold for each output neuron.
+- If weighted sum > bias, the neuron fires.
 
-(1xn) * (nxk) == (1xk)
+## Formula
 
-where n is number of input neuron, k is number of output neuron
-total weights is (input neuron * output neuron)
+```
+(1×n) · (n×k) = (1×k)
+```
 
-Gather data --> Train data --> Test data --> Save Model
+Where `n` is the number of input neurons and `k` is the number of output neurons.
 
-## %OBSERVATION%
-I have noticed that RGB pictures yield better results then BW pictures for training neural network
-
-### learning is finding right weights and biases
-
-## FORMULA
-sigmoid function compress values to between 0 and 1
-sigmoid func --> y = 1/(1+e**-x) , where e = 2.718
-[A] is input matrix
-[B] is weights matrix
-[C] is bias of each output neuron
-activation of output neuron --> Sigmoid_Func([A].[B] + [C])
-
-sigmoid  | [p, q, r] * [a, x]                    |
-func     |             [b, y]  + [Bias1, Bias2]  |   ==  [activation1, activation2]
-         |             [c, z]                    |
-
-after sigmoid function we can multiply with 100 and get percentage value of how sure
-neural network is to fire the neuron, given that activation of input neuron was also
-between 0 and 1
-
-## ReLU instead of Sigmoid for faster NN
-(Rectified Linear Unit)
-ReLU returns 0 for x = 0 or x < 0 and returns x for x > 0
-Formula --> max(0, x)
+**ReLU:** `max(0, x)`  
+**Sigmoid:** `1 / (1 + e^-x)`
